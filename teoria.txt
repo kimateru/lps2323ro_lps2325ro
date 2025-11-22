@@ -1,0 +1,138 @@
+COMENZI DE BAZĂ
+
+git init 
+- „Inițializează” un repository Git nou în folderul curent.
+- După această comandă, folderul devine proiect Git și apare un subfolder ascuns .git unde se păstrează toată istoria.
+
+git status
+- Verifică starea curentă a proiectului.
+- Arată:
+  - ce fișiere au fost modificate
+  - ce fișiere sunt pregătite pentru commit (staged)
+  - ce fișiere nu sunt urmărite de Git (untracked)
+
+git add .
+- Adaugă TOATE fișierele modificate și noi în zona de „staging”.
+- „.” înseamnă „din folderul curent și toate subfolderele”.
+- Practic îi spui lui Git: „pregătește aceste modificări pentru commit”.
+
+git commit -m "message"
+- Creează un commit cu mesajul "message".
+- Commit = un „snapshot” (poză) al proiectului în acest moment.
+- Mesajul trebuie să fie clar: ce ai schimbat și de ce (ex: "Adaugă pagina de login").
+
+git checkout ticket
+- Schimbă branch-ul sau revine la o anumită versiune (commit) identificată prin nume sau ID.
+- În exemplu: „ticket” poate fi numele unui branch sau tag.
+- Practic: „mergi la această versiune / acest branch”.
+
+git switch -
+- Se întoarce la branch-ul pe care ai fost înainte (un pas înapoi la branch-ul anterior).
+- Exemplu: dacă ai fost pe main, ai trecut pe feature-x, cu git switch - revii pe main.
+
+git log
+- Afișează istoria commit-urilor.
+- Vezi:
+  - ID-ul commit-ului (hash)
+  - autorul
+  - data
+  - mesajul commit-ului
+
+git config --global user.name "Your Name"
+- Setează NUMELE tău global pentru toate proiectele Git de pe acest calculator.
+- Acest nume va apărea la „author” pentru commit-urile tale.
+
+git config --global user.email "your_email@example.com"
+- Setează EMAIL-ul tău global pentru toate proiectele Git de pe acest calculator.
+- Acest email apare în istoria commit-urilor (pentru identificare, GitHub etc.).
+
+
+CONCEPTE DE BAZĂ
+
+1) Ce este Git?
+- Git este un sistem de control al versiunilor (Version Control System).
+- El:
+  - salvează istoricul tuturor modificărilor unui proiect
+  - îți permite să revii la o versiune mai veche
+  - îți permite să lucrezi pe ramuri (branches) separate și apoi să le unești
+  - te ajută să lucrezi în echipă fără să-ți strici codul reciproc
+- Git lucrează local pe calculatorul tău: repository-ul este în folderul proiectului (.git).
+
+2) Ce este GitHub?
+- GitHub este un serviciu online (o platformă) unde poți urca (hosta) repository-urile Git.
+- Diferență:
+  - Git = unealta de pe calculator (programul care gestionează versiunile)
+  - GitHub = site-ul unde îți stochezi și partajezi repository-urile
+- Cu GitHub poți:
+  - salva proiectele în cloud (backup)
+  - colabora cu alți programatori
+  - deschide pull request-uri, issues
+  - folosi sisteme de code review, CI/CD etc.
+
+3) Ce este un repository (repo)?
+- Un repository este proiectul tău „sub control Git”.
+- Conține:
+  - fișierele proiectului
+  - tot istoricul commit-urilor
+  - informații despre branch-uri, tag-uri etc.
+- Practic: folderul proiectului + subfolderul ascuns .git.
+
+4) Ce este un commit?
+- Commit = o „poză” a stării proiectului la un anumit moment.
+- Când faci commit:
+  - Git salvează ce fișiere sunt modificate și cum arată ele acum.
+  - Dai un mesaj scurt care explică schimbările.
+- De ce e important:
+  - poți reveni la commit-uri vechi
+  - poți urmări cine, ce și când a schimbat
+  - istoria proiectului devine clară și organizată
+
+Proces clasic:
+- modifici fișierele
+- git add .   → pregătești modificările
+- git commit -m "mesaj" → salvezi snapshot-ul
+
+5) Ce este checkout (git checkout)?
+- git checkout are două utilizări principale (în Git mai vechi):
+  1) Schimbare de branch (ex: git checkout main)
+  2) Trecerea la un commit vechi sau un tag (ex: git checkout 123abc)
+- Practic: „mută” HEAD (indicatorul versiunii curente) la alt branch / alt commit.
+- Atenție:
+  - când faci checkout la un commit vechi, intri în „detached HEAD state”
+  - adică nu ești pe un branch, ci doar privești o versiune veche
+
+Astăzi se recomandă:
+- git switch pentru schimbare de branch
+- git restore pentru restaurarea fișierelor
+
+6) Ce este git switch?
+- O comandă mai nouă și mai clară pentru a schimba branch-ul.
+- Exemple:
+  - git switch main     → mergi pe branch-ul main
+  - git switch -         → revii la branch-ul anterior
+- E mai ușor de înțeles decât git checkout pentru lucrul cu branch-uri.
+
+7) Zonele din Git (workflow simplificat)
+- Working directory:
+  - fișierele tale normale din proiect, pe care le editezi cu editorul.
+- Staging area (index):
+  - zona unde adaugi modificările înainte de commit (git add).
+- Repository:
+  - aici sunt commit-urile deja salvate (după git commit).
+
+Flux simplu:
+- editezi fișiere → working directory
+- git add ... → staging area
+- git commit → repository (istoria oficială a proiectului)
+
+
+Rezumat:
+- Git = unealta de versionare pe calculator
+- GitHub = platformă online pentru a stoca și împărtăși repository-uri Git
+- git init = pornește controlul versiunilor într-un folder
+- git status = vezi starea fișierelor
+- git add . = pregătești toate modificările pentru commit
+- git commit -m "mesaj" = salvezi un snapshot cu mesaj
+- git checkout / git switch = schimbi branch-uri sau versiuni
+- git log = vezi istoria commit-urilor
+- git config --global user.name / user.email = setezi identitatea ta globală pentru Git
